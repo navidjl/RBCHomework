@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RBC HomeWork</string>
+    <string name="amount_currency">%1$s $</string>
+    <string name="account_name_label">Account Name</string>
+    <string name="account_transaction_error">Error</string>
+    <string name="account_transaction_loading">Loading</string>
+    <string name="account_transaction_number_label">Account #:</string>
+    <string name="account_transaction_balance_label">Balance:</string>
+    <string name="account_transaction_transactions_title">Transactions</string>
+</resources>

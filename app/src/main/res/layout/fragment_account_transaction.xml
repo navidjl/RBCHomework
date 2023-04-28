@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.myapplication.viewmodel.AccountTransactionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:context=".AccountTransactionFragment">
+
+        <TextView
+            android:id="@+id/headerStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:gravity="center"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Transactions" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/accountInfoContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/headerStatus"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/accountNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/account_name_label"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/accountName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@{viewModel.account.account.name}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/accountNameLabel"
+                app:layout_constraintStart_toEndOf="@id/accountNameLabel"
+                app:layout_constraintTop_toTopOf="@id/accountNameLabel" />
+
+            <TextView
+                android:id="@+id/accountNumberLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/account_transaction_number_label"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/accountNameLabel" />
+
+            <TextView
+                android:id="@+id/accountNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@{viewModel.account.account.number}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/accountNumberLabel"
+                app:layout_constraintStart_toEndOf="@id/accountNumberLabel"
+                app:layout_constraintTop_toTopOf="@+id/accountNumberLabel" />
+
+            <TextView
+                android:id="@+id/accountBalanceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/account_transaction_balance_label"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/accountNumberLabel" />
+
+            <TextView
+                android:id="@+id/accountBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@{viewModel.account.account.balance}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/accountBalanceLabel"
+                app:layout_constraintStart_toEndOf="@id/accountBalanceLabel"
+                app:layout_constraintTop_toTopOf="@+id/accountBalanceLabel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/loadingView"
+            layout="@layout/loading_view_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/accountInfoContainer" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transactionListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accountInfoContainer"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
